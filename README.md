@@ -8,6 +8,15 @@ through them one at a time while a large countdown floats above all your windows
 
 See [REQUIREMENTS.md](./REQUIREMENTS.md) for the full spec.
 
+## Download
+Grab the latest installer for your OS from the
+[**Releases**](https://github.com/karthic-nims/perchboard/releases) page —
+`.dmg` (macOS), `.exe` (Windows), or `.AppImage` (Linux). Builds auto-update
+from GitHub Releases on launch.
+
+> Note: builds are not yet code-signed, so macOS Gatekeeper / Windows SmartScreen
+> may warn on first launch until signing certificates are added.
+
 ## Stack
 Electron + React + TypeScript, bundled with [electron-vite](https://electron-vite.org).
 State in [Zustand](https://github.com/pmndrs/zustand); local persistence via
@@ -24,7 +33,23 @@ npm run dev        # launch with hot reload
 npm run typecheck  # tsc for main + renderer
 npm run build      # production bundle into out/
 npm run dist       # build + package installers (dmg / nsis / AppImage) via electron-builder
+npm run gen-icon   # regenerate the app icon (resources/icon.png)
 ```
+
+## Releasing
+Releases are built and published automatically by
+[`.github/workflows/release.yml`](./.github/workflows/release.yml) — a matrix
+build across macOS, Windows, and Linux runners.
+
+To cut a release:
+```bash
+# 1. bump the version in package.json (must match the tag), then:
+git tag v0.1.0
+git push origin master --tags
+```
+The workflow builds each platform's installer and uploads them to a **draft**
+GitHub Release for that tag. Review it on the Releases page and click *Publish*.
+`electron-updater` then delivers it to existing users on their next launch.
 
 ## How it works
 - **Tray / menu-bar icon** is the home base: Show/Hide, Settings, Quit. The window

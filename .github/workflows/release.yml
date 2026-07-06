@@ -1,0 +1,43 @@
+name: Release
+
+# Build & publish installers when a version tag is pushed, e.g. `git tag v0.1.0 && git push --tags`.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write # allow the workflow's GITHUB_TOKEN to create the GitHub Release
+
+jobs:
+  release:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build renderer + main
+        run: npm run build
+
+      - name: Build & publish installer
+        run: npx electron-builder --publish always
+        env:
+          # GITHUB_TOKEN lets electron-builder create/update the GitHub Release
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # No code-signing certificate yet — skip signing so the mac build doesn't fail.
+          # (Add APPLE_ID / CSC_LINK / notarization secrets here later for signed builds.)
+          CSC_IDENTITY_AUTO_DISCOVERY: false

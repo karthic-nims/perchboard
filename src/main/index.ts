@@ -1,4 +1,5 @@
 import { app, BrowserWindow, Tray, Menu, ipcMain, globalShortcut, Notification, nativeImage, screen } from 'electron'
+import { autoUpdater } from 'electron-updater'
 import { join } from 'path'
 import { loadState, saveState } from './store'
 import { iconDataUrl } from './icon'
@@ -240,6 +241,11 @@ app.whenReady().then(() => {
     app.setLoginItemSettings({ openAtLogin: true })
   }
   if (state.settings.showInTaskbar) applyTaskbarMode(true)
+
+  // Auto-update from GitHub Releases — packaged builds only (no-op in dev).
+  if (app.isPackaged) {
+    autoUpdater.checkForUpdatesAndNotify().catch(() => {})
+  }
 })
 
 app.on('window-all-closed', () => {
