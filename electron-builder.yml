@@ -1,0 +1,21 @@
+appId: com.karthic.perchboard
+productName: Perchboard
+directories:
+  buildResources: resources
+files:
+  - '!**/.vscode/*'
+  - '!{REQUIREMENTS.md,README.md,electron.vite.config.ts,electron-builder.yml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+  - '!scripts/*'
+mac:
+  target: dmg
+  category: public.app-category.productivity
+win:
+  target: nsis
+linux:
+  target: AppImage
+  category: Utility
+publish:
+  provider: github
+  owner: karthic-nims
+  repo: perchboard

@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Build output
+# out/  = electron-vite build (main/preload/renderer bundles)
+# dist/ = electron-builder installers (.dmg / .exe / .AppImage)
+out/
+dist/
+
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
