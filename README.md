@@ -10,6 +10,34 @@ See [REQUIREMENTS.md](./REQUIREMENTS.md) for the full spec.
 
 ---
 
+## Features
+
+- **Always-on-top overlay** — a large countdown that floats above every window,
+  even fullscreen apps. Transparent and **click-through** when collapsed; hover to
+  reveal the panel.
+- **Per-day task queue** — add tasks with a per-task time budget; work them one at
+  a time. The list **auto-resets each new day**.
+- **Drift-free countdown** — end-timestamp based. At zero it **dings**, fires a
+  **desktop notification**, and blinks at `00:00` until you choose **Done**,
+  **Requeue** (do later), or **Restart** with more time.
+- **Timer controls** — pause/resume, reset, skip-to-end, complete-early.
+- **Rest breaks** — optionally prompt a short break after finishing a task.
+- **"About to end" warning** — an optional soft chime a configurable number of
+  seconds before time runs out.
+- **11 built-in themes** (light → dark, across Dark/Light/Nature/Vibrant) **plus
+  custom colors**, a **system-font picker**, and an adjustable timer size.
+- **Rebindable global hotkeys** for show/hide, start, and stop, with
+  conflict-resistant defaults and registration-failure detection.
+- **Drag anywhere & multi-monitor aware** — remembers position; clamps back
+  on-screen if a display is removed. Runs from the **menu-bar / system tray**;
+  optional **launch at login**.
+- **Local-only & offline** — no accounts, no telemetry, no network calls; all
+  state lives in one local config file.
+- **Cross-platform** — macOS (Apple Silicon + Intel), Windows, and Linux, with
+  built-in **auto-update**.
+
+---
+
 ## Download
 
 Grab the latest installer for your OS + CPU from the
@@ -213,3 +241,7 @@ src/preload/   contextBridge API + shared TypeScript types
 src/renderer/  React UI (store, hooks, components, themes, styles)
 scripts/       gen-assets.cjs — embeds the ding + warning sounds + tray icon as data URLs
 ```
+
+## License
+
+[MIT](./LICENSE) © 2026 Karthic.C.D
