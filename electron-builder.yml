@@ -13,6 +13,9 @@ mac:
       arch:
         - arm64 # Apple Silicon
         - x64 # Intel
+  # Force the arch into every dmg name so Intel is clearly labeled (-x64),
+  # not left suffix-less as electron-builder does for the default arch.
+  artifactName: ${productName}-${version}-${arch}.${ext}
   category: public.app-category.productivity
 win:
   target: nsis
