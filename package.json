@@ -1,6 +1,6 @@
 {
   "name": "perchboard",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Perchboard — a floating focus timer for your daily tasks",
   "main": "./out/main/index.js",
   "author": "karthic",

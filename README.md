@@ -11,8 +11,9 @@ See [REQUIREMENTS.md](./REQUIREMENTS.md) for the full spec.
 ## Download
 Grab the latest installer for your OS from the
 [**Releases**](https://github.com/karthic-nims/perchboard/releases) page —
-`.dmg` (macOS), `.exe` (Windows), or `.AppImage` (Linux). Builds auto-update
-from GitHub Releases on launch.
+`.dmg` (macOS — `-arm64` for Apple Silicon, `-x64` for Intel), `.exe` (Windows),
+or `.AppImage` (Linux). Builds auto-update from GitHub Releases on launch
+(the updater automatically picks the matching macOS architecture).
 
 > Note: builds are not yet code-signed, so macOS Gatekeeper / Windows SmartScreen
 > may warn on first launch until signing certificates are added.
