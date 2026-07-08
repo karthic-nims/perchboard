@@ -73,6 +73,46 @@ macOS architecture.
 
 ---
 
+## Uninstall
+
+Perchboard stores everything locally in a single config folder (tasks, appearance,
+hotkeys, settings) — no accounts, no cloud, nothing outside these paths. Removing
+the app and that folder uninstalls it completely.
+
+### macOS
+1. **Quit** Perchboard from the menu-bar icon.
+2. Drag **Perchboard** from **Applications** to the Trash.
+3. Remove settings + data (optional):
+   ```bash
+   rm -rf ~/Library/Application\ Support/Perchboard
+   ```
+4. If you turned on **Launch at login**, clear it in
+   System Settings → General → Login Items (removing the app also stops it).
+
+### Windows
+1. **Quit** Perchboard from the tray icon.
+2. Uninstall via **Settings → Apps → Installed apps → Perchboard → Uninstall**
+   (or the Start-menu uninstaller) — this removes the app and its Start-menu entry.
+3. Remove settings + data (optional), in PowerShell:
+   ```powershell
+   Remove-Item -Recurse -Force "$env:APPDATA\Perchboard"
+   ```
+
+### Linux
+1. **Quit** Perchboard from the tray/indicator.
+2. Delete the AppImage — it's portable, nothing else was installed:
+   ```bash
+   rm Perchboard-<version>.AppImage
+   ```
+3. Remove settings + data (optional):
+   ```bash
+   rm -rf ~/.config/Perchboard
+   ```
+4. If a desktop launcher was created for it (e.g. by AppImageLauncher), remove
+   that entry too.
+
+---
+
 ## Run it (from source, for development)
 
 **Prerequisites:** [Node.js](https://nodejs.org) 20+ and npm.
@@ -131,6 +171,19 @@ GitHub Release for that tag. Review it on the Releases page and click **Publish*
 `electron-updater` then delivers the update to existing users on their next launch.
 
 ---
+
+## Roadmap
+
+Today Perchboard is **local-only** and you add each day's tasks by hand. A planned
+direction is **task-manager integrations** — pull tasks straight from the tools you
+already use instead of retyping them, and (where the service allows) push
+completions back. Candidates on the radar include **Todoist, Things, Notion, Jira,
+Asana, Trello, GitHub Issues, and Google Tasks**.
+
+The app is designed with this in mind: the main process owns all persistence behind
+an IPC boundary (see [REQUIREMENTS.md](./REQUIREMENTS.md) → Storage), which is the
+seam these connectors will plug into without touching the timer UI. This is
+exploratory and **not in the current build** — expect it in a future release.
 
 ## How it works
 - **Tray / menu-bar icon** is the home base: Show/Hide, Settings, Quit. The window
