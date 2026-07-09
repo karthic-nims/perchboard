@@ -55,6 +55,11 @@ metadata**, not downloads — you don't need them. On launch, an installed build
 checks GitHub Releases and updates itself, automatically picking the matching
 macOS architecture.
 
+**System requirements** — **macOS** 10.15 Catalina or later · **Windows** 10 or
+later (**64-bit only**) · **Linux** **x86-64** with glibc and FUSE 2. There are
+**no 32-bit builds and no ARM-Linux build** — if your OS is older than these or
+on a different CPU, the installer will download but the app won't launch.
+
 > **⚠️ Not code-signed or notarized yet.** Because there are no signing
 > certificates on the builds, your OS *will* flag Perchboard on first launch —
 > **this is expected, not a sign anything is wrong**:
