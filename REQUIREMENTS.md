@@ -44,10 +44,14 @@ have shipped and are now tracked as functional requirements (FR-031, FR-035).
 - Linux (x86-64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2.AppImage
 
 **Always-latest download links** — `…/releases/latest/download/<file>` redirects to
-the newest release. These become **permanent** only once the artifact filenames
-drop `${version}` (pending — see Future/Backlog → Distribution). Until then, link
-the release page above.
-- Pattern: `https://github.com/karthic-nims/perchboard/releases/latest/download/<installer-filename>`
+the newest release. Artifact names are now **version-less** (configured in
+`electron-builder.yml`), so these links are **permanent** from the next release
+(v0.1.3) onward; the current v0.1.2 assets still carry versioned names, so the
+links below resolve only once v0.1.3 is published.
+- macOS (Apple Silicon): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-arm64.dmg
+- macOS (Intel): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-x64.dmg
+- Windows (x64): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe
+- Linux (x86-64): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard.AppImage
 
 **Auto-update feed** (electron-updater, FR-035) — published with every release,
 not meant for manual download:
@@ -175,11 +179,12 @@ The IPC boundary keeps storage swappable without touching the UI.
   past activity can be reviewed and reported in later releases. Not in v1.
 - ~~**Free color customization**~~ — **✅ Delivered** as the custom theme (FR-031):
   the user picks background / text / accent and the rest of the palette is derived.
-- **Distribution hardening (still pending):** installers (dmg / NSIS / AppImage)
-  and auto-update ship today, but the builds are **not yet code-signed or
-  notarized** — macOS Gatekeeper and Windows SmartScreen still warn on first launch
-  (see the README install steps). Add Apple signing + notarization and a Windows
-  Authenticode certificate for friction-free installs.
+- **Distribution hardening (still pending):** installers (dmg / NSIS / AppImage),
+  auto-update, and **version-less artifact names** (permanent download links) ship
+  today, but the builds are **not yet code-signed or notarized** — macOS Gatekeeper
+  and Windows SmartScreen still warn on first launch (see the README install steps).
+  Add Apple signing + notarization and a Windows Authenticode certificate for
+  friction-free installs.
 - ~~**Auto-update**~~ — **✅ Delivered** (FR-035): packaged builds self-update from
   GitHub Releases via `electron-updater`.
 - **Accounts + cross-device sync (future version):** today the app is

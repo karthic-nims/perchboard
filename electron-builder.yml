@@ -13,14 +13,17 @@ mac:
       arch:
         - arm64 # Apple Silicon
         - x64 # Intel
-  # Force the arch into every dmg name so Intel is clearly labeled (-x64),
-  # not left suffix-less as electron-builder does for the default arch.
-  artifactName: ${productName}-${version}-${arch}.${ext}
+  # Version-less names so landing-page / README download links stay permanent:
+  # https://.../releases/latest/download/Perchboard-arm64.dmg always hits the
+  # newest release. The arch suffix still distinguishes Apple Silicon vs Intel.
+  artifactName: ${productName}-${arch}.${ext}
   category: public.app-category.productivity
 win:
   target: nsis
+  artifactName: ${productName}-Setup.${ext} # Perchboard-Setup.exe (no version)
 linux:
   target: AppImage
+  artifactName: ${productName}.${ext} # Perchboard.AppImage (no version)
   category: Utility
 publish:
   provider: github

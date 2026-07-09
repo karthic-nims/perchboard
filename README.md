@@ -40,15 +40,20 @@ See [REQUIREMENTS.md](./REQUIREMENTS.md) for the full spec.
 
 ## Download
 
-Grab the latest installer for your OS + CPU from the
+Download the installer for your OS + CPU directly below — each link always
+resolves to the **newest release** — or browse every version on the
 [**Releases**](https://github.com/karthic-nims/perchboard/releases) page.
 
-| OS | CPU / Arch | File | Type |
-|----|------------|------|------|
-| **macOS** | Apple Silicon (M1/M2/M3…) | `Perchboard-<version>-arm64.dmg` | Disk image |
-| **macOS** | Intel | `Perchboard-<version>-x64.dmg` | Disk image |
-| **Windows** | x64 | `Perchboard-Setup-<version>.exe` | NSIS installer |
-| **Linux** | x64 | `Perchboard-<version>.AppImage` | Portable app |
+| OS | CPU / Arch | Download | Type |
+|----|------------|----------|------|
+| **macOS** | Apple Silicon (M1/M2/M3…) | [`Perchboard-arm64.dmg`](https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-arm64.dmg) | Disk image |
+| **macOS** | Intel | [`Perchboard-x64.dmg`](https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-x64.dmg) | Disk image |
+| **Windows** | x64 | [`Perchboard-Setup.exe`](https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe) | NSIS installer |
+| **Linux** | x86-64 | [`Perchboard.AppImage`](https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard.AppImage) | Portable app |
+
+> **If a download 404s:** the version-less filenames above take effect from the
+> **next** release. Until then, grab the installer from the
+> [latest release](https://github.com/karthic-nims/perchboard/releases/latest) page.
 
 The `*.blockmap` and `latest*.yml` files alongside them are **auto-update
 metadata**, not downloads — you don't need them. On launch, an installed build
@@ -106,7 +111,7 @@ on a different CPU, the installer will download but the app won't launch.
    **Settings**, and **Quit**.
 
 ### Windows
-1. Run `Perchboard-Setup-<version>.exe`.
+1. Run `Perchboard-Setup.exe`.
 2. SmartScreen shows a blue **"Windows protected your PC"** dialog because the
    installer is unsigned. The **Run anyway** button is hidden by default:
    1. Click the **More info** link (small text under the message).
@@ -123,8 +128,8 @@ on a different CPU, the installer will download but the app won't launch.
 ### Linux
 1. Make the AppImage executable, then run it:
    ```bash
-   chmod +x Perchboard-<version>.AppImage
-   ./Perchboard-<version>.AppImage
+   chmod +x Perchboard.AppImage
+   ./Perchboard.AppImage
    ```
 2. AppImage is **distro-agnostic** — it runs on any modern x86-64 distribution
    (Ubuntu, Debian, Fedora, openSUSE, Arch, Mint, Pop!_OS…). No install step.
@@ -170,7 +175,7 @@ the app and that folder uninstalls it completely.
 1. **Quit** Perchboard from the tray/indicator.
 2. Delete the AppImage — it's portable, nothing else was installed:
    ```bash
-   rm Perchboard-<version>.AppImage
+   rm Perchboard.AppImage
    ```
 3. Remove settings + data (optional):
    ```bash
