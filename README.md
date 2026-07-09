@@ -55,9 +55,17 @@ metadata**, not downloads — you don't need them. On launch, an installed build
 checks GitHub Releases and updates itself, automatically picking the matching
 macOS architecture.
 
-> **Not code-signed yet:** macOS Gatekeeper and Windows SmartScreen will warn on
-> first launch until signing certificates are added — see the per-OS steps below
-> for how to get past the warning.
+> **⚠️ Not code-signed or notarized yet.** Because there are no signing
+> certificates on the builds, your OS *will* flag Perchboard on first launch —
+> **this is expected, not a sign anything is wrong**:
+> - **macOS** — Gatekeeper says *"Perchboard can't be opened because Apple cannot
+>   check it for malicious software"* or *"…is damaged and can't be opened."*
+> - **Windows** — SmartScreen shows a blue *"Windows protected your PC"* dialog.
+> - **Linux** — no warning; nothing to bypass.
+>
+> These are **one-time** prompts. Follow the per-OS steps below to get past them;
+> after the first launch the app opens normally. If you'd rather verify the build
+> yourself first, it's fully open source — build it [from source](#run-it-from-source-for-development).
 
 ---
 
@@ -66,16 +74,43 @@ macOS architecture.
 ### macOS
 1. Open the `.dmg` and drag **Perchboard** into your **Applications** folder.
    - Apple Silicon Mac → use the **`-arm64`** dmg. Intel Mac → use the **`-x64`** dmg.
-2. First launch is blocked because the app is unsigned. Get past Gatekeeper with
-   **right-click (or Control-click) the app → Open → Open**. You only do this once.
-   - If macOS still refuses, run once: `xattr -dr com.apple.quarantine /Applications/Perchboard.app`
+   - Not sure which? **Apple menu →  About This Mac**: "Apple M1/M2/M3…" = arm64,
+     "Intel" = x64. (Picking the wrong one just won't launch — no harm done.)
+2. Because the app is unsigned, first launch is blocked. **Which method works
+   depends on your macOS version** — try them top to bottom:
+
+   **macOS 15 (Sequoia) and newer** *(right-click → Open was removed here)*
+   1. Double-click **Perchboard** once. You'll get the "cannot be opened" warning —
+      click **Done** (do **not** click "Move to Trash").
+   2. Open **System Settings → Privacy & Security**, scroll to the **Security**
+      section. You'll see *"Perchboard was blocked to protect your Mac"* with an
+      **Open Anyway** button — click it, then authenticate with Touch ID / password.
+   3. A final dialog appears — click **Open Anyway** once more. Done for good.
+
+   **macOS 13–14 (Ventura / Sonoma) and earlier**
+   - **Right-click (or Control-click) the app icon → Open → Open.** You only do this once.
+
+   **Fallback for any version (or if you see *"Perchboard is damaged and can't be
+   opened"*)** — this message just means the file is quarantined + unsigned; it is
+   **not** actually damaged. Strip the quarantine flag in Terminal, then open normally:
+   ```bash
+   xattr -dr com.apple.quarantine /Applications/Perchboard.app
+   ```
 3. Perchboard has **no Dock icon and no window chrome** — it lives in the
    **menu bar** (top-right). Click the menu-bar icon for **Show / Hide**,
    **Settings**, and **Quit**.
 
 ### Windows
 1. Run `Perchboard-Setup-<version>.exe`.
-2. SmartScreen may warn (unsigned): click **More info → Run anyway**.
+2. SmartScreen shows a blue **"Windows protected your PC"** dialog because the
+   installer is unsigned. The **Run anyway** button is hidden by default:
+   1. Click the **More info** link (small text under the message).
+   2. A **Run anyway** button appears at the bottom — click it. You only do this once.
+   - **Alternative:** right-click the downloaded `.exe` → **Properties** → tick
+     **Unblock** at the bottom of the General tab → **OK**, then run it — SmartScreen
+     won't prompt at all.
+   - Your browser (Edge/Chrome) may *also* warn that the download is "not commonly
+     downloaded" — choose **Keep** / **Keep anyway** to save the file.
 3. The installer sets up the app and a Start-menu entry. The app runs from the
    **system tray** (bottom-right) — right-click the tray icon for
    **Show / Hide**, **Settings**, and **Quit**.
