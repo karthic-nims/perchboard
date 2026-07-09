@@ -10,7 +10,7 @@ requirements here as they come up.
 version adds accounts and cross-device sync (see Future / Backlog).
 
 **Status:** the v1 MVP is **implemented and shipping** — latest release
-**v0.1.2** (2026-07-08), with packaged installers for macOS / Windows / Linux and
+**v0.1.3** (2026-07-09), with packaged installers for macOS / Windows / Linux and
 in-app auto-update. Every FR/NFR below is **✅ Done** unless its row says
 otherwise. Several items originally in Future/Backlog (custom colors, auto-update)
 have shipped and are now tracked as functional requirements (FR-031, FR-035).
@@ -34,22 +34,20 @@ have shipped and are now tracked as functional requirements (FR-031, FR-035).
 **Releases**
 - All releases: https://github.com/karthic-nims/perchboard/releases
 - Latest release (auto-redirect): https://github.com/karthic-nims/perchboard/releases/latest
-- Current — v0.1.2 (2026-07-08): https://github.com/karthic-nims/perchboard/releases/tag/v0.1.2
+- Current — v0.1.3 (2026-07-09): https://github.com/karthic-nims/perchboard/releases/tag/v0.1.3
 
-**Installers — current release (v0.1.2)** — ⚠️ these URLs embed the version and
-**change every release**; for a landing page prefer the always-latest form below.
-- macOS (Apple Silicon): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2-arm64.dmg
-- macOS (Intel): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2-x64.dmg
-- Windows (x64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-Setup-0.1.2.exe
-- Linux (x86-64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2.AppImage
+**Installers — current release (v0.1.3)** — ⚠️ these URLs embed the version and
+**change every release**; for a landing page use the always-latest form below.
+- macOS (Apple Silicon): https://github.com/karthic-nims/perchboard/releases/download/v0.1.3/Perchboard-arm64.dmg
+- macOS (Intel): https://github.com/karthic-nims/perchboard/releases/download/v0.1.3/Perchboard-x64.dmg
+- Windows (x64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.3/Perchboard-Setup.exe
+- Linux (x86-64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.3/Perchboard.AppImage
 
 **Always-latest download links — canonical for the landing page / any external
 site.** `…/releases/latest/download/<file>` redirects to the newest release, and
-artifact names are now **version-less** (configured in `electron-builder.yml`), so
+artifact names are **version-less** (configured in `electron-builder.yml`), so
 these URLs are **permanent — hardcode once, never edit them again**; each new
-release is served automatically. (The current v0.1.2 assets still carry versioned
-names, so the links below resolve only once v0.1.3 — the first version-less
-release — is published.)
+release is served automatically. **Live as of v0.1.3** (verified HTTP 200).
 - macOS (Apple Silicon): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-arm64.dmg
 - macOS (Intel): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-x64.dmg
 - Windows (x64): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe
@@ -216,3 +214,4 @@ The IPC boundary keeps storage swappable without touching the UI.
 - 2026-06-25 — Deeper gap pass: added FR-024 (collapsed gestures — hover/drag/click mapping), FR-025 (elapsed-while-away → run completion flow on return). FR-005 input validation; FR-009 gains complete-early + skip-to-end semantics. Added NFR-008 (accessibility) and NFR-009 (app icon/branding). Backlog: distribution code-signing/notarization and auto-update.
 - 2026-06-26 — Third gap pass: added NFR-010 (no focus stealing — non-activating overlay), FR-013a (show completed + "X of Y done" progress), FR-026 (mute/volume), FR-027 (first-run discoverability hint), FR-013 scrollable list, FR-008 ding plays once. Fixed FR-017 wording (theme, not color). Storage: `status` enum incl. `skipped`, `firstRunDone`, `settings.muted`. Added a **Non-Goals (v1)** section to fence scope.
 - 2026-07-09 — **Implementation reconciliation** against shipped v0.1.2. Flipped all FR/NFR statuses to **✅ Done**; added a **Status** line to the header. Documented features that grew beyond the original spec as new requirements: FR-028 (rest breaks), FR-029 ("about to end" amber warning + chime), FR-030 (opt-in auto-start-next, relaxing FR-007), FR-031 (custom theme — supersedes the backlog "free color" item), FR-032 (taskbar/Dock mode with minimize), FR-033 (in-app Help panel), FR-034 (clear-completed), FR-035 (auto-update — promoted from backlog). FR-014 updated to **11 themes across Dark/Light/Nature/Vibrant** (default Aurora) plus the custom theme. Storage model updated: `appearance.custom`, `activeTimer.remainingSec`/`isBreak`, and `settings.{autoStartNext, breakMinutes, warningSec, warningSound, showInTaskbar}`. Future/Backlog: marked free-color and auto-update **Delivered**; code-signing / notarization remains the only pending distribution item.
+- 2026-07-09 — **Released v0.1.3.** First build with **version-less artifact names** (`Perchboard-arm64.dmg` / `-x64.dmg`, `Perchboard-Setup.exe`, `Perchboard.AppImage`) so the `…/releases/latest/download/<file>` links are now **permanent and live** (verified HTTP 200) — safe to hardcode on the landing page. No app-code changes since v0.1.2. Only pending distribution item remains code-signing / notarization.

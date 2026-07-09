@@ -51,8 +51,8 @@ resolves to the **newest release** — or browse every version on the
 | **Windows** | x64 | [`Perchboard-Setup.exe`](https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe) | NSIS installer |
 | **Linux** | x86-64 | [`Perchboard.AppImage`](https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard.AppImage) | Portable app |
 
-> **If a download 404s:** the version-less filenames above take effect from the
-> **next** release. Until then, grab the installer from the
+> **These links are live** (as of **v0.1.3**) and always serve the newest release.
+> If one ever 404s — e.g. briefly mid-release — grab the installer from the
 > [latest release](https://github.com/karthic-nims/perchboard/releases/latest) page.
 
 The `*.blockmap` and `latest*.yml` files alongside them are **auto-update
@@ -87,8 +87,8 @@ Drop-in HTML for the launch page:
 
 - **Show all four buttons.** A browser can't distinguish Apple Silicon from Intel
   (both report as "Macintosh"), so never auto-pick one Mac build — let the user choose.
-- **Links go live once the first version-less release (v0.1.3) is published.** Until
-  then they 404, because the current v0.1.2 assets still carry versioned names.
+- **Links are live as of v0.1.3** and every release since keeps identical
+  filenames, so they never change — set them once and leave them.
 - No API calls, no rate limits, no JavaScript required — these are plain static
   redirects, so they work from any static site or CDN.
 
