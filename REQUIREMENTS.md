@@ -15,6 +15,49 @@ in-app auto-update. Every FR/NFR below is **✅ Done** unless its row says
 otherwise. Several items originally in Future/Backlog (custom colors, auto-update)
 have shipped and are now tracked as functional requirements (FR-031, FR-035).
 
+## Links & Resources
+
+**Repository** (GitHub — owner `karthic-nims`, repo `perchboard`)
+- Project home: https://github.com/karthic-nims/perchboard
+- Clone (HTTPS): `https://github.com/karthic-nims/perchboard.git`
+- Clone (SSH): `git@github.com:karthic-nims/perchboard.git`
+- Issues: https://github.com/karthic-nims/perchboard/issues
+- Commits: https://github.com/karthic-nims/perchboard/commits/master
+- Release CI workflow: https://github.com/karthic-nims/perchboard/blob/master/.github/workflows/release.yml
+  ([`.github/workflows/release.yml`](./.github/workflows/release.yml))
+
+**In-repo docs**
+- README (install / build / release): [`./README.md`](./README.md)
+- Requirements (this doc): [`./REQUIREMENTS.md`](./REQUIREMENTS.md)
+- License — MIT: [`./LICENSE`](./LICENSE)
+
+**Releases**
+- All releases: https://github.com/karthic-nims/perchboard/releases
+- Latest release (auto-redirect): https://github.com/karthic-nims/perchboard/releases/latest
+- Current — v0.1.2 (2026-07-08): https://github.com/karthic-nims/perchboard/releases/tag/v0.1.2
+
+**Installers — current release (v0.1.2)** — ⚠️ these URLs embed the version and
+**change every release**; for a landing page prefer the always-latest form below.
+- macOS (Apple Silicon): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2-arm64.dmg
+- macOS (Intel): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2-x64.dmg
+- Windows (x64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-Setup-0.1.2.exe
+- Linux (x86-64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2.AppImage
+
+**Always-latest download links** — `…/releases/latest/download/<file>` redirects to
+the newest release. These become **permanent** only once the artifact filenames
+drop `${version}` (pending — see Future/Backlog → Distribution). Until then, link
+the release page above.
+- Pattern: `https://github.com/karthic-nims/perchboard/releases/latest/download/<installer-filename>`
+
+**Auto-update feed** (electron-updater, FR-035) — published with every release,
+not meant for manual download:
+- `latest-mac.yml` · `latest.yml` · `latest-linux.yml` (+ `*.blockmap`), served from
+  `…/releases/latest/download/`
+
+> The GitHub repo has **no website / homepage URL** configured. If you publish a
+> landing page, set it as the repo's homepage (GitHub → repo → About → ⚙) and add
+> the link here.
+
 ## Overview
 - Frameless, minimal overlay app with large timer fonts.
 - Floats above all other windows (maximum possible level).
