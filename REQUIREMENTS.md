@@ -43,11 +43,13 @@ have shipped and are now tracked as functional requirements (FR-031, FR-035).
 - Windows (x64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-Setup-0.1.2.exe
 - Linux (x86-64): https://github.com/karthic-nims/perchboard/releases/download/v0.1.2/Perchboard-0.1.2.AppImage
 
-**Always-latest download links** — `…/releases/latest/download/<file>` redirects to
-the newest release. Artifact names are now **version-less** (configured in
-`electron-builder.yml`), so these links are **permanent** from the next release
-(v0.1.3) onward; the current v0.1.2 assets still carry versioned names, so the
-links below resolve only once v0.1.3 is published.
+**Always-latest download links — canonical for the landing page / any external
+site.** `…/releases/latest/download/<file>` redirects to the newest release, and
+artifact names are now **version-less** (configured in `electron-builder.yml`), so
+these URLs are **permanent — hardcode once, never edit them again**; each new
+release is served automatically. (The current v0.1.2 assets still carry versioned
+names, so the links below resolve only once v0.1.3 — the first version-less
+release — is published.)
 - macOS (Apple Silicon): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-arm64.dmg
 - macOS (Intel): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-x64.dmg
 - Windows (x64): https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe

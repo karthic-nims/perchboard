@@ -60,6 +60,38 @@ metadata**, not downloads — you don't need them. On launch, an installed build
 checks GitHub Releases and updates itself, automatically picking the matching
 macOS architecture.
 
+### Linking from a website or landing page
+
+The four download URLs above are **permanent and never change**. Each points at
+`…/releases/latest/download/<file>`, which GitHub always redirects to the newest
+published release, and the installer filenames carry **no version number** — so a
+landing page can hardcode these links **once** and every future release is served
+automatically, with no edits. These are the canonical links to use externally:
+
+```
+https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-arm64.dmg     # macOS Apple Silicon
+https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-x64.dmg        # macOS Intel
+https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe      # Windows x64
+https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard.AppImage       # Linux x86-64
+```
+
+Drop-in HTML for the launch page:
+
+```html
+<a href="https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-arm64.dmg">Download for macOS (Apple Silicon)</a>
+<a href="https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-x64.dmg">Download for macOS (Intel)</a>
+<a href="https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard-Setup.exe">Download for Windows</a>
+<a href="https://github.com/karthic-nims/perchboard/releases/latest/download/Perchboard.AppImage">Download for Linux</a>
+<a href="https://github.com/karthic-nims/perchboard/releases/latest">All downloads &amp; release notes</a>
+```
+
+- **Show all four buttons.** A browser can't distinguish Apple Silicon from Intel
+  (both report as "Macintosh"), so never auto-pick one Mac build — let the user choose.
+- **Links go live once the first version-less release (v0.1.3) is published.** Until
+  then they 404, because the current v0.1.2 assets still carry versioned names.
+- No API calls, no rate limits, no JavaScript required — these are plain static
+  redirects, so they work from any static site or CDN.
+
 **System requirements** — **macOS** 10.15 Catalina or later · **Windows** 10 or
 later (**64-bit only**) · **Linux** **x86-64** with glibc and FUSE 2. There are
 **no 32-bit builds and no ARM-Linux build** — if your OS is older than these or
